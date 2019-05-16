@@ -133,6 +133,9 @@
                 <label for="short-des"><b>Short Description</b></label>
                 <input type="text" placeholder="Short Description" name="short-des" required>
 
+                <label for="file-upload"><b>Car Image</b></label>
+                <input type="file" placeholder="Select image" name="file-upload" required>
+
                 <label for="full-description"><b>Full Description</b></label>
                 <textarea name="full-description" placeholder="Full Description of vehicle and its specifications" rows="4">
                 </textarea>
@@ -151,7 +154,7 @@
             <!--search style--> 
             <div class="container-add-ad">
                 <div class="fullGalleryDiv">
-			        <span class="fa fa-plus"> </span><a href="javascript:void(0);" class="create-ad info" onclick="document.getElementById('add').style.display='block'">Create AD</a> 
+			        <a href="javascript:void(0);" class="create-ad info" onclick="document.getElementById('add').style.display='block'"><span class="fa fa-plus"> </span>Create AD</a> 
 			    </div>
             </div>
             
@@ -165,7 +168,8 @@
                 <img src="images/beennx.jpg" alt="Nature" onclick="miniGallery(this);">
                 <h3><b>AMG Benz</b></h3>
                 <p><i>$40000</i></p>
-                <p class="details">AMG is a luxurious brand of benz.</p>
+                <p class="details">AMG is a luxurious brand of benz.</p>    
+                <input type="checkbox" name="vehicle1" value="Bike"> Sold    
                 <p><button class="add-to-cart info" data-id="1" onclick="document.getElementById('update').style.display='block'">Edit</button> <button class="add-to-cart danger" data-id="1" onclick="document.getElementById('del').style.display='block'">Delete</button></p>
             </div>
             <div class="column card">
