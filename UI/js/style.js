@@ -2,11 +2,10 @@
 let galleryModal = document.getElementById('myModal'),
     slideIndex = 0,
     miniModalImg = document.getElementById('img01'),
-    modalElements = document.getElementsByClassName('modal');
-
-const cars = document.querySelector('#cars-list'),
-      shoppingCart = document.querySelector('#cart-content tbody'),
-      clearCartBtn = document.querySelector('.clear-cart');
+    modalElements = document.getElementsByClassName('modal'),
+    cars = document.querySelector('#cars-list'),
+    shoppingCart = document.querySelector('#cart-content tbody'),
+    clearCartBtn = document.querySelector('.clear-cart');
 
 
 
@@ -79,6 +78,14 @@ window.onclick = function(event) {
 function miniGallery(image) {
     galleryModal.style.display = 'block';
     miniModalImg.src = image.src;
+}
+
+// function to close the modal when X is clicked
+function modalClose() {
+    //modal.parentElement.style.display = 'none';
+    for (let i = 0; i < modalElements.length; i++) {
+      modalElements[i].style.display = 'none';        
+    }
 }
 
 // Adding purchase(s) to chart

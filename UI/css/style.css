@@ -134,7 +134,7 @@ button:hover {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  overflow: none; /* Enable scroll if needed */
   background: rgba(0, 0, 0, 0.9);
   padding-top: 50px;
 }
@@ -151,7 +151,7 @@ button:hover {
 /* Style the horizontal ruler */
 hr {
   border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
 }
  
 /* The Close Button (x) */
@@ -345,6 +345,43 @@ hr {
   .header_card{
     width:100%;
     right: 0;
+  }
+  
+  /*Signup styling*/
+  /*styling for close (X) button*/
+  .close {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f44336;
+  }
+  
+  /*modal styling*/
+  .modal {
+    overflow: auto; /* Enable scroll if needed */
+  }
+  input[type=text], input[type=password], input[type=file] {
+    width: 100%;
+    padding: 10px;
+    margin-left: -10px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 6px;
+  }
+  .cancelbtn, .signupbtn {
+    float: left;
+    width: 50%;
+    margin-left: -10px;
+  }
+  .modal-content {
+    background-color: #fefefec7;
+    margin: 15px auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 80%; /* Could be more or less, depending on screen size */
   }
 }
 
