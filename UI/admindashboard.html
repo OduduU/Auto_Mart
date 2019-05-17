@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Automart</title>
+</head>
+<body>
+    <!--Header -->
+    <div class="topnav" id="myTopnav">
+        <a href="javascript:void(0);" class="active">Home</a>
+    </div>
+
+	<!-- Modal for confirm delete-->
+    <div id="id01" class="modal">
+        <span onclick="modalClose()" class="close" title="Close Modal">&times;</span>
+        <form class="delete-modal animate" action="#">
+            <div class="container">
+                <p>Please confirm you want to delete this ad.</p>
+                <hr>
+          
+                <div class="clearfix">
+                  <button type="button" onclick="modalClose()" class="signupbtn">Cancel</button>
+                  <button type="submit" class="cancelbtn">Confirm</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="slideshow-container">
+        <div class="admin_search">
+            <!--search style--> 
+            <div class="container">
+                <form action="#" class="card-form">
+                    <div class="inner-wrap">
+                        <label>MAKE:
+                            <select>
+                                <option value="Make">Make</option>
+                                <option value="Benz">Benz</option>
+                                <option value="BMW">BMW</option>
+                                <option value="Toyota">Toyota</option>
+                                <option value="Honda">Honda</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="inner-wrap">
+                            <label>Car State:
+                                <select>
+                                    <option value="State">State</option>
+                                    <option value="Used">Used</option>
+                                    <option value="New">New</option>
+                                </select>
+                            </label>
+                    </div>
+
+                    <div class="inner-wrap">
+                            <label>YEAR:
+                                <select>
+                                    <option value="">Year</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                </select>
+                            </label>
+                    </div>
+
+                    <div class="button-section">
+                        <input type="submit" name="submit" value="Search" id="submitBtn" />
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <!-- The car gallery -->
+    
+    <div class="row">
+        <div class="column card">
+        	<div class="purchase-state">
+        		<p> Sold Out!</p>	
+        	</div>
+            <img src="images/beennx.jpg" alt="Nature" onclick="miniGallery(this);">
+            <h3><b>AMG Benz</b></h3>
+            <p><i>$40000</i></p>
+            <p class="details">AMG is a luxurious brand of benz that we ought to buy soonest</p>
+            <p><button class="danger" onclick="displayDeleteModal()"><span class="fa fa-trash">&nbsp;&nbsp;</span>Delete Ad.</button></p>
+        </div>
+        <div class="column card">
+            <img src="images/maserati-levante.jpg" alt="Snow" onclick="miniGallery(this);">
+            <h3><b>AMG Benz</b></h3>
+            <p><i>$40000</i></p>
+            <p class="details">AMG is a luxurious brand of benz that we ought to buy soonest</p>
+            <p><button class="danger" onclick="displayDeleteModal()"><span class="fa fa-trash">&nbsp;&nbsp;</span>Delete Ad.</button></p>
+        </div>
+        <div class="column card">
+            <img src="images/bugatti-chiron.jpg" alt="Mountains" onclick="miniGallery(this);">
+            <h3><b>AMG Benz</b></h3>
+            <p><i>$40000</i></p>
+            <p class="details">AMG is a luxurious brand of benz that we ought to buy soonest</p>
+            <p><button class="danger" onclick="displayDeleteModal()"><span class="fa fa-trash">&nbsp;&nbsp;</span>Delete Ad.</button></p>
+        </div>
+        <div class="column card">
+        	<div class="purchase-state">
+        		<p> Sold Out!</p>	
+        	</div>
+            <img src="images/kk.jpg" alt="Lights" onclick="miniGallery(this);">
+            <h3><b>AMG Benz</b></h3>
+            <p><i>$40000</i></p>
+            <p class="details">AMG is a luxurious brand of benz that we ought to buy soonest</p>
+            <p><button class="danger" onclick="displayDeleteModal()"><span class="fa fa-trash">&nbsp;&nbsp;</span>Delete Ad.</button></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column card">
+            <img src="images/benz-eqc.jpg" alt="Nature" onclick="miniGallery(this);">
+            <h3><b>AMG Benz</b></h3>
+            <p><i>$40000</i></p>
+            <p class="details">AMG is a luxurious brand of benz that we ought to buy soonest</p>
+            <p><button class="danger" onclick="displayDeleteModal()"><span class="fa fa-trash">&nbsp;&nbsp;</span>Delete Ad.</button></p>
+        </div>
+        <div class="column card">
+        	<div class="purchase-state">
+        		<p> Sold Out!</p>	
+        	</div>
+            <img src="images/BenzElectric.jpg" alt="Snow" onclick="miniGallery(this);">
+            <h3><b>AMG Benz</b></h3>
+            <p><i>$40000</i></p>
+            <p class="details">AMG is a luxurious brand of benz that we ought to buy soonest</p>
+            <p><button class="danger" onclick="displayDeleteModal()"><span class="fa fa-trash">&nbsp;&nbsp;</span>Delete Ad.</button></p>
+        </div>
+        <div class="column card">
+            <img src="images/lost.jpg" alt="Mountains" onclick="miniGallery(this);">
+            <h3><b>AMG Benz</b></h3>
+            <p><i>$40000</i></p>
+            <p class="details">AMG is a luxurious brand of benz that we ought to buy soonest</p>
+            <p><button class="danger" onclick="displayDeleteModal()"><span class="fa fa-trash">&nbsp;&nbsp;</span>Delete Ad.</button></p>
+        </div>
+        <div class="column card">
+            <img src="images/AMG.jpg" alt="Lights" onclick="miniGallery(this);">
+            <h3><b>AMG Benz</b></h3>
+            <p><i>$40000</i></p>
+            <p class="details">AMG is a luxurious brand of benz that we ought to buy soonest</p>
+            <p><button class="danger" onclick="displayDeleteModal()"><span class="fa fa-trash">&nbsp;&nbsp;</span>Delete Ad.</button></p>
+        </div>
+    </div>  
+    
+    <div class="fullGalleryDiv">
+        <a href="javascript:void(0);" class="fullGallery">View More</a> 
+    </div>
+    
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="modalClose()">&times;</span>
+        <img class="modal-img" id="img01">
+    </div>
+
+
+
+
+    <script src="js/style.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Automart</title>
+</head>
+<body>
+    <!--Header -->
+    <div class="topnav" id="myTopnav">
+        <a href="javascript:void(0);" class="active">Home</a>
+        <a href="javascript:void(0);" class="cart-icon fa fa-shopping-cart"onclick="cartModal()"></a>
+        <a href="javascript:void(0);">My Profile</a>
+        <a href="viewads.html">View My Ads</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <!--shopping cart -->
+    <div class="modal" id="car-cart">
+        <div class="cart">
+            <table id="cart-content">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button class="clear-cart">Clear Cart</button>
+        </div>
+    </div>
+    
+
+    
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
+        <div class="header_card">
+            <!--search style--> 
+            <div class="container">
+                <form action="#" class="card-form">
+                    <div class="inner-wrap">
+                        <label>Make:
+                            <select>
+                                <option value="Make">Make</option>
+                                <option value="Benz">Benz</option>
+                                <option value="BMW">BMW</option>
+                                <option value="Toyota">Toyota</option>
+                                <option value="Honda">Honda</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="inner-wrap">
+                            <label>Car State:
+                                <select>
+                                    <option value="State">State</option>
+                                    <option value="Used">Used</option>
+                                    <option value="New">New</option>
+                                </select>
+                            </label>
+                    </div>
+
+                    <div class="inner-wrap">
+                            <label>YEAR:
+                                <select>
+                                    <option value="YEAR">YEAR</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                </select>
+                            </label>
+                    </div>
+
+                    <div class="button-section">
+                        <input type="submit" name="submit" value="Search Unsold" id="submitBtn" />
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+            <img src="images/1.jpg" alt="car">
+        </div>
+  
+        <div class="mySlides fade">
+            <img src="images/2.jpg" alt="car">
+        </div>
+  
+        <div class="mySlides fade">
+            <img src="images/3.jpg" alt="car">
+        </div>
+    </div>
+
+    <!-- The car gallery -->
+    <div class="cars-list" id="cars-list">
+        <div class="row">
+            <div class="column card">
+                <img src="images/beennx.jpg" alt="Nature" onclick="miniGallery(this);">
+                <h3><b>AMG Benz</b></h3>
+                <p><i>$40000</i></p>
+                <p class="details">AMG is a luxurious brand of benz.</p>
+                <a href="javascript:void(0);" ><span class="fa fa-flag">Flag</span></a>
+                <p><button class="add-to-cart" data-id="1">Add to Cart</button></p>
+            </div>
+            <div class="column card">
+                <img src="images/maserati-levante.jpg" alt="Snow" onclick="miniGallery(this);">
+                <h3><b>AMG Benz</b></h3>
+                <p><i>$40000</i></p>
+                <p class="details">AMG is a luxurious brand of benz.</p>
+                <a href="javascript:void(0);" ><span class="fa fa-flag">Flag</span></a>
+                <p><button class="add-to-cart" data-id="2">Add to Cart</button></p>
+            </div>
+            <div class="column card">
+                <img src="images/bugatti-chiron.jpg" alt="Mountains" onclick="miniGallery(this);">
+                <h3><b>AMG Benz</b></h3>
+                <p><i>$40000</i></p>
+                <p class="details">AMG is a luxurious brand of benz.</p>
+                <a href="javascript:void(0);" ><span class="fa fa-flag">Flag</span></a>
+                <p><button class="add-to-cart" data-id="3">Add to Cart</button></p>
+            </div>
+            <div class="column card">
+                <img src="images/kk.jpg" alt="Lights" onclick="miniGallery(this);">
+                <h3><b>AMG Benz</b></h3>
+                <p><i>$40000</i></p>
+                <p class="details">AMG is a luxurious brand of benz.</p>
+                <a href="javascript:void(0);" ><span class="fa fa-flag">Flag</span></a>
+                <p><button class="add-to-cart" data-id="4">Add to Cart</button></p>
+            </div>
+        </div>
+            
+        <div class="row">
+            <div class="column card">
+                <img src="images/benz-eqc.jpg" alt="Nature" onclick="miniGallery(this);">
+                <h3><b>AMG Benz</b></h3>
+                <p><i>$40000</i></p>
+                <p class="details">AMG is a luxurious brand of benz.</p>
+                <a href="javascript:void(0);" ><span class="fa fa-flag">Flag</span></a>
+                <p><button class="add-to-cart" data-id="5">Add to Cart</button></p>
+            </div>
+            <div class="column card">
+                <img src="images/BenzElectric.jpg" alt="Snow" onclick="miniGallery(this);">
+                <h3><b>AMG Benz</b></h3>
+                <p><i>$40000</i></p>
+                <p class="details">AMG is a luxurious brand of benz.</p>
+                <a href="javascript:void(0);" ><span class="fa fa-flag">Flag</span></a>
+                <p><button class="add-to-cart" data-id="6">Add to Cart</button></p>
+            </div>
+            <div class="column card">
+                <img src="images/lost.jpg" alt="Mountains" onclick="miniGallery(this);">
+                <h3><b>AMG Benz</b></h3>
+                <p><i>$40000</i></p>
+                <p class="details">AMG is a luxurious brand of benz.</p>
+                <a href="javascript:void(0);" ><span class="fa fa-flag">Flag</span></a>
+                <p><button class="add-to-cart" data-id="7">Add to Cart</button></p>
+            </div>
+            <div class="column card">
+                <img src="images/AMG.jpg" alt="Lights" onclick="miniGallery(this);">
+                <h3><b>AMG Benz</b></h3>
+                <p><i>$40000</i></p>
+                <p class="details">AMG is a luxurious brand of benz.</p>
+                <a href="javascript:void(0);" ><span class="fa fa-flag">Flag</span></a>
+                <p><button class="add-to-cart" data-id="8">Add to Cart</button></p>
+            </div>
+        </div>  
+    </div>
+    
+    
+    <div class="fullGalleryDiv">
+        <a href="javascript:void(0);" class="fullGallery">View More</a> 
+    </div>
+    
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="modalClose()">&times;</span>
+        <img class="modal-img" id="img01">
+    </div>
+
+
+
+
+    <script src="js/style.js"></script>
+</body>
+</html>
