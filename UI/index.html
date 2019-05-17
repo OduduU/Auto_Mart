@@ -12,9 +12,9 @@
     <!--Header -->
     <div class="topnav" id="myTopnav">
         <a href="javascript:void(0);" class="active">Home</a>
-        <a href="javascript:void(0);" class="cart-icon"onclick="document.getElementById('car-cart').style.display='block'"><img src="images/cart.png" alt=""></a>
-        <a href="javascript:void(0);" onclick="document.getElementById('id0').style.display='block'">Sign in</a>
-        <a href="javascript:void(0);" onclick="document.getElementById('id01').style.display='block'">Sign up</a>
+        <a href="javascript:void(0);" class="cart-icon" onclick="cartModal()"><img src="images/cart.png" alt=""></a>
+        <a href="javascript:void(0);" onclick="signInModal()">Sign in</a>
+        <a href="javascript:void(0);" onclick="signUpModal()">Sign up</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
         </a>
@@ -41,12 +41,8 @@
 
     <!-- Modal for Sign in-->
     <div id="id0" class="modal">
-  
-        <form class="modal-content animate" action="">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id0').style.display='none'" class="closeM" title="Close Modal">&times;</span>
-            </div>
-          
+        <span onclick="modalClose()" class="close" title="Close Modal">&times;</span>
+        <form class="modal-content animate" action="#">  
             <div class="container">
                 <label for="uname"><b>Username</b></label>
                 <input type="text" placeholder="Enter Username" name="uname" required>
@@ -54,16 +50,17 @@
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required>
                   
-                <button type="submit">Login</button>
+                <button type="submit"><a href="userdashboard.html" target="_blank">Login</a></button>
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
             </div>
           
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id0').style.display='none'" class="cancelb">Cancel</button>
+            <div class="container">
+                <button type="button" onclick="modalClose()" class="cancelb">Cancel</button>
                 <span class="psw">Forgot <a href="#">password?</a></span>
             </div>
+            
         </form>
     </div>
     
@@ -97,49 +94,48 @@
         </form>
     </div>
  
-    <!-- Slideshow container -->
-    <div class="slideshow-container">
+<!-- Slideshow container -->
+<div class="slideshow-container">
         <div class="header_card">
             <!--search style--> 
             <div class="container">
                 <form action="#" class="card-form">
                     <div class="inner-wrap">
-                        <label>MAKE:
-                            <select name="" id="">
-                                <option value="">MAKE</option>
-                                <option value="">BENZ</option>
-                                <option value="">BMW</option>
-                                <option value="">TOYOTO</option>
-                                <option value="">HONDA</option>
+                        <label>Make:
+                            <select>
+                                <option value="Make">Make</option>
+                                <option value="Benz">Benz</option>
+                                <option value="BMW">BMW</option>
+                                <option value="Toyota">Toyota</option>
+                                <option value="Honda">Honda</option>
                             </select>
                         </label>
                     </div>
 
                     <div class="inner-wrap">
-                            <label>TYPE:
-                                <select name="" id="">
-                                    <option value="">TYPE</option>
-                                    <option value="">SUV</option>
-                                    <option value="">SPORT</option>
-                                    <option value="">SALON</option>
+                            <label>Car State:
+                                <select>
+                                    <option value="State">State</option>
+                                    <option value="Used">Used</option>
+                                    <option value="New">New</option>
                                 </select>
                             </label>
                     </div>
 
                     <div class="inner-wrap">
                             <label>YEAR:
-                                <select name="" id="">
-                                    <option value="">YEAR</option>
-                                    <option value="">2018</option>
-                                    <option value="">2017</option>
-                                    <option value="">2016</option>
-                                    <option value="">2015</option>
+                                <select>
+                                    <option value="Year">Year</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
                                 </select>
                             </label>
                     </div>
 
                     <div class="button-section">
-                        <input type="submit" name="submit" value="SEARCH" id="submitBtn" />
+                        <input type="submit" name="submit" value="Search Unsold" id="submitBtn" />
                     </div>
                 </form>
             </div>
@@ -148,17 +144,18 @@
 
         <!-- Full-width images with number and caption text -->
         <div class="mySlides fade">
-            <img src="images/1.jpg" style="width:100%">
-        </div>
-  
-        <div class="mySlides fade">
-            <img src="images/2.jpg" style="width:100%">
-        </div>
-  
-        <div class="mySlides fade">
-            <img src="images/3.jpg" style="width:100%">
+                <img src="images/1.jpg" alt="car">
+            </div>
+      
+            <div class="mySlides fade">
+                <img src="images/2.jpg" alt="car">
+            </div>
+      
+            <div class="mySlides fade">
+                <img src="images/3.jpg" alt="car">
         </div>
     </div>
+
 
     <!-- The car gallery -->
     <div class="cars-list" id="cars-list">
@@ -241,7 +238,7 @@
     
     <!-- The Modal -->
     <div id="myModal" class="modal">
-        <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+        <span class="close" onclick="modalClose()">&times;</span>
         <img class="modal-img" id="img01">
     </div>
 

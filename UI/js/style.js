@@ -88,9 +88,45 @@ function modalClose() {
     }
 }
 
+//function to display the create add modal
+function createAddModal() {
+    let createAdd = document.getElementById('add');
+    createAdd.style.display = 'block';
+}
+
+//function to display edit ad modal
+function editAddModal() {
+    let editAdd = document.getElementById('update');
+    editAdd.style.display = 'block';
+}
+
+//function to display cart modal
+function cartModal() {
+    let cart = document.getElementById('car-cart');
+    cart.style.display = 'block';
+}
+
+//function to display sign in modal
+function signInModal() {
+    let signModal = document.getElementById('id0');
+    signModal.style.display = 'block';
+}
+
+//function to display sign up modal
+function signUpModal() {
+    let signup = document.getElementById('id01');
+    signup.style.display='block';
+}
+
+//function to display admin delete modal
+function displayDeleteModal() {
+    let adminDelete = document.getElementById('id01');
+    adminDelete.style.display='block';
+}
+
 // Adding purchase(s) to chart
 function buyCar(e) {
-    e.preventDefault();
+    //e.preventDefault();
     // Use delegation to find the course that was added
     if(e.target.classList.contains('add-to-cart')) {
          // read the car details
@@ -110,7 +146,6 @@ function getCarInfo(car) {
          price: car.querySelector('p i').textContent,
          id: car.querySelector('p button').getAttribute('data-id')
     }
-    console.log(carInfo);
     // Insert into the shopping cart
     addIntoCart(carInfo);
 }
@@ -132,7 +167,7 @@ function addIntoCart(car) {
         </td>
     `;
     // Add into the shopping cart
-    document.querySelector('#cart-total').style.display = "block";
+    //document.querySelector('#cart-total').style.display = "block";
     shoppingCart.insertBefore(row, document.querySelector('#cart-content tbody #cart-total'));
     //shoppingCart.appendChild(row);
 
@@ -176,7 +211,6 @@ function removeCar(e) {
         car = e.target.parentElement.parentElement;
         carId = car.querySelector('a').getAttribute('data-id');
     }
-    console.log(carId);
     // remove from the local storage
     removeCarLocalStorage(carId);
 }
