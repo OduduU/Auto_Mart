@@ -22,7 +22,33 @@ const User = {
         } else {
             res.status(400).json('Invalid Credentials');
         }
-    }
+    },
+
+    // adds new user to the database,   
+    create(req, res) {
+        const {email, first_name, last_name, password, address} = req.body;
+        let salt = bcrypt.genSaltSync(10);
+        let token = authenticateUser(email);
+        const newUser = {
+            token: token,
+            id: dataB.autoIncrement(dataB.Users),
+            email: email,
+            first_name: first_name,
+            last_name: last_name,
+            password: bcrypt.hashSync(password, salt),
+            address: address,
+            is_admin: false
+        }
+
+        let user = dataB.getUserByEmail(email);
+
+        if (user !== false) {
+            return res.status(404).json('Email Already Exist');
+        } else {            
+            let response = UserDb.create(newUser)
+            res.status(200).json(response);
+        }
+    },
 };
 
 export default User;
