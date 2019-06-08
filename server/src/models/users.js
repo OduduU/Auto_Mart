@@ -72,6 +72,29 @@ const UserDb = {
         let response = 'User Successfully Deleted'
         return response;
     },
+
+    // Update user details
+    updateUser(user, first_name, last_name, address) {
+        let users = database.Users;
+        let index = users.indexOf(user);
+        
+        // Update details 
+        users[index].first_name = first_name;
+        users[index].last_name = last_name;
+        users[index].address = address;
+
+        let response = {
+            status: 200,
+            data: {
+                id: user.id,
+                first_name: user.first_name,
+                last_name: user.last_name,
+                email: user.email,
+                address: user.address
+            }
+        }
+        return response;
+    }
 }
 
 export default UserDb;

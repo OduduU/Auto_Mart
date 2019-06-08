@@ -25,5 +25,8 @@ app.get('/api/v1/users', User.allUsers);
 // Delete a user using id
 app.delete('/api/v1/users/:id', User.deleteUser);
 
+// Update user details 
+app.put('/api/v1/users/:id', User.updateUser);
+
 // Start the express server
 app.listen(port, () => console.log(`server running on port ${port}`));

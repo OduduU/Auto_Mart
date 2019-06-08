@@ -87,6 +87,21 @@ const User = {
 
         res.status(200).json(response);
     },
+
+    // Update user details
+    updateUser(req, res) {
+        const {id} = req.params;
+        const {first_name, last_name, address} = req.body;
+        let user = dataB.getUserById(id);
+
+        // If not existing, return 404 (user not found)
+        if (user === false) return res.status(404).send('The user with the given ID was not found');
+
+        let response = UserDb.updateUser(user, first_name, last_name, address);
+
+        // Return the updated user
+        res.status(200).json(response);
+    }
 };
 
 export default User;
