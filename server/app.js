@@ -19,5 +19,8 @@ app.post('/api/v1/signup', User.create);
 // Get the user profile for their homepage
 app.get('/api/v1/users/:id', User.userProfile);
 
+// Get all users
+app.get('/api/v1/users', User.allUsers);
+
 // Start the express server
 app.listen(port, () => console.log(`server running on port ${port}`));

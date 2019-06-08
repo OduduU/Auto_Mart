@@ -51,6 +51,21 @@ const UserDb = {
         }
         return response;
     },
+
+    // Get all users
+    allUsers() {
+        let allUsers = [];
+        let response;
+        database.Users.forEach(user => {
+            allUsers.push(user);
+        });
+
+        response = {
+            status: 200,
+            data: allUsers
+        }
+        return response;
+    },
 }
 
 export default UserDb;

@@ -62,6 +62,12 @@ const User = {
         let response = UserDb.userProfile(user);
         res.status(200).json(response);
     },
+
+    // Get all users
+    allUsers(req, res) {
+        let response = UserDb.allUsers();
+        res.status(200).json(dataB.Users);
+    },
 };
 
 export default User;
