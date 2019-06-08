@@ -172,7 +172,23 @@ const Car = {
 
         response = carDb.specificMake(available_cars);
         res.status(200).json(response);
-    }
+    },
+
+    //View all used available unsold cars (manufacturer)
+    specificManufacturer(req, res) {
+        let status = req.query;
+        let available_cars = [];
+        let response;
+
+        dataB.Cars.forEach(car => {
+            if ((car.status === status.status) &&  (car.manufacturer === status.manufacturer)){
+                available_cars.push(car);
+            }
+        });
+
+        response = carDb.specificMake(available_cars);
+        res.status(200).json(response);
+    },
 };
 
 export default Car;
