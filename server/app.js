@@ -63,5 +63,8 @@ app.get('/api/v1/car?status=available&state=used', Car.specificMake);
 //View all used available unsold cars (manufacturer)
 app.get('/api/v1/car?status=available&manufacturer=XXXValue', Car.specificManufacturer);
 
+//View all cars of a specific body type
+app.get('/api/v1/car?body_type=bodyType', Car.specificBody);
+
 // Start the express server
 app.listen(port, () => console.log(`server running on port ${port}`));

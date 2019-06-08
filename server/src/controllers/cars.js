@@ -189,6 +189,22 @@ const Car = {
         response = carDb.specificMake(available_cars);
         res.status(200).json(response);
     },
+
+    //View all cars of a specific body type
+    specificBody(req, res) {
+        let status = req.query.body_type;
+        let available_cars = [];
+        let response;
+
+        dataB.Cars.forEach(car => {
+            if (car.body_type === status){
+                available_cars.push(car);
+            }
+        });
+
+        response = carDb.specificMake(available_cars);
+        res.status(200).json(response);
+    }
 };
 
 export default Car;
