@@ -68,6 +68,25 @@ const User = {
         let response = UserDb.allUsers();
         res.status(200).json(dataB.Users);
     },
+
+    // Delete a user using id
+    deleteUser(req, res) {
+        const {id} = req.params;
+
+        // Look up the car
+        let user = dataB.getUserById(id);
+
+        // If not existing, return 404 (user not found)
+        if (user === false) return res.status(404).json('The user with the given ID was not found');
+        
+        // Delete
+        let index = dataB.Users.indexOf(user);
+        dataB.Users.splice(index, 1);
+
+        let response = UserDb.deleteUser(user); 
+
+        res.status(200).json(response);
+    },
 };
 
 export default User;

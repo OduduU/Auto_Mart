@@ -66,6 +66,12 @@ const UserDb = {
         }
         return response;
     },
+
+    // Delete a user using id
+    deleteUser() {
+        let response = 'User Successfully Deleted'
+        return response;
+    },
 }
 
 export default UserDb;
