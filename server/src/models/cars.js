@@ -84,6 +84,15 @@ const carDb = {
             data: allCars
         }
         return response;
+    },
+
+    //User can view all unsold cars within a price range
+    unsoldWithinPrice(allCars) {
+        let response = {
+            status: 200,
+            data: allCars
+        }
+        return response;
     }
 }
 

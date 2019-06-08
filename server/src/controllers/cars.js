@@ -109,6 +109,24 @@ const Car = {
 
         response = carDb.allUnsold(available_cars);
         res.status(200).json(response);
+    },
+
+    //User can view all unsold cars within a price range
+    unsoldWithinPrice(req, res) {
+        let status = req.query.status;
+        let min_price = req.query.min_price;
+        let max_price = req.query.max_price;
+        let available_cars = [];
+        let response;
+
+        dataB.Cars.forEach(car => {
+            if ((car.price >= min_price) && (car.price <= max_price) &&  (car.status === status)){
+                available_cars.push(car);
+            }
+        })
+
+        response = carDb.unsoldWithinPrice(available_cars);
+        res.status(200).json(response);
     }
 };
 

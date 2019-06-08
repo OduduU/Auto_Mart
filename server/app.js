@@ -45,5 +45,8 @@ app.get('/api/v1/car/:id', Car.viewSpecific);
 // View all unsold cars
 app.get('/api/v1/car?status=available', Car.allUnsold);
 
+//User can view all unsold cars within a price range
+app.get('/api/v1/car?status=available&min_price=XXXValue&max_price=XXXValue', Car.unsoldWithinPrice);
+
 // Start the express server
 app.listen(port, () => console.log(`server running on port ${port}`));
