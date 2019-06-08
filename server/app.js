@@ -51,5 +51,8 @@ app.get('/api/v1/car?status=available&min_price=XXXValue&max_price=XXXValue', Ca
 // Delete a specific car ad using id
 app.delete('/api/v1/car/:id', Car.deleteSpecificCar);
 
+// Get all car ads
+app.get('/api/v1/car', Car.getAllCars);
+
 // Start the express server
 app.listen(port, () => console.log(`server running on port ${port}`));

@@ -144,6 +144,18 @@ const Car = {
         // Return the same car
         res.status(200).send('Car Ad successfully deleted');
 
+    },
+
+    // Get all car ads
+    getAllCars(req, res) {
+        let allCars = [];
+        let response;
+        dataB.Cars.forEach(car => {
+            allCars.push(car);
+        });
+
+        response = carDb.getAllCars(allCars);
+        res.status(200).json(response);
     }
 };
 

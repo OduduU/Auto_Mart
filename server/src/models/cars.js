@@ -100,6 +100,15 @@ const carDb = {
         // Delete
         let index = database.Cars.indexOf(car);
         database.Cars.splice(index, 1);
+    },
+
+    // Get all car ads
+    getAllCars(allCars) {
+        let response = {
+            status: 200,
+            data: allCars
+        }
+        return response;
     }
 }
 
