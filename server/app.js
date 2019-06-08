@@ -34,7 +34,10 @@ app.put('/api/v1/users/:id', User.updateUser);
 app.post('/api/v1/car', Car.create);
 
 // Mark a posted car Ad as sold
-app.patch('/api/v1/car/:id/status',Car.markAsSold)
+app.patch('/api/v1/car/:id/status', Car.markAsSold)
+
+// Update the price of a car
+app.patch('/api/v1/car/:id/price',Car.updatePrice)
 
 // Start the express server
 app.listen(port, () => console.log(`server running on port ${port}`));

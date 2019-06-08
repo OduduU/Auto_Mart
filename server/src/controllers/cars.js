@@ -50,9 +50,35 @@ const Car = {
         if (car.status === 'available') {
             // Update details 
             cars[index].status = 'sold';
+        } else {
+            return res.status(400).json('Çar already sold');
         }
 
         let response = carDb.markAsSold(car);
+        res.status(200).json(response);
+    },
+
+    // Update the price of a car
+    updatePrice(req, res) {
+        const { id } = req.params;
+        const { price } = req.body;
+        let cars = dataB.Cars;
+        
+        
+        // look up the car
+        let car = dataB.getCarById(id);
+
+
+        // If not existing, return 404 (user not found)
+        if (car === false) return res.status(404).json('The car with the given ID was not found');
+
+        let index = cars.indexOf(car);
+
+
+        // Update details 
+        cars[index].price = price;
+
+        let response = carDb.updatePrice(car);
         res.status(200).json(response);
     }
 };
