@@ -127,6 +127,23 @@ const Car = {
 
         response = carDb.unsoldWithinPrice(available_cars);
         res.status(200).json(response);
+    },
+
+    // Delete a specific car ad using id
+    deleteSpecificCar(req, res) {
+        const { id } = req.params;
+        // Look up the car
+        let car = dataB.getCarById(id);
+
+        // If not existing, return 404 (user not found)
+        if (car === false) return res.status(404).send('The car with the given ID was not found');
+
+        // delete
+        carDb.deleteSpecificCar(car);
+
+        // Return the same car
+        res.status(200).send('Car Ad successfully deleted');
+
     }
 };
 

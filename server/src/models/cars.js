@@ -93,6 +93,13 @@ const carDb = {
             data: allCars
         }
         return response;
+    },
+
+    // Delete a specific car ad using id
+    deleteSpecificCar(car) {
+        // Delete
+        let index = database.Cars.indexOf(car);
+        database.Cars.splice(index, 1);
     }
 }
 
