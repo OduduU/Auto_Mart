@@ -49,6 +49,19 @@ const User = {
             res.status(200).json(response);
         }
     },
+
+    // Get the user profile for their homepage
+    userProfile(req, res) {
+        const { id } = req.params;
+        let user = dataB.getUserById(id);
+
+        if(user === false) {
+            return res.status(404).json('Invalid User ID');
+        }
+
+        let response = UserDb.userProfile(user);
+        res.status(200).json(response);
+    },
 };
 
 export default User;
