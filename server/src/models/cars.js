@@ -56,6 +56,25 @@ const carDb = {
             }
         }
         return response;
+    },
+
+    // View a specific car
+    viewSpecific(car) {
+        let response = {
+            status: 200,
+            data: {
+                id: car.id,
+                created_on: car.created_on,
+                manufacturer: car.manufacturer,
+                status: car.status,
+                model: car.model,
+                price: car.price,
+                state: car.state,
+                owner: car.owner,
+                body_type: car.body_type
+            }
+        }
+        return response;
     }
 }
 

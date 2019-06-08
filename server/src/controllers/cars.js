@@ -80,6 +80,19 @@ const Car = {
 
         let response = carDb.updatePrice(car);
         res.status(200).json(response);
+    },
+
+    // View a specific car
+    viewSpecific(req, res) {
+        const { id } = req.params;
+        let car = dataB.getCarById(id);
+        
+        if(car === false) {
+            return res.status(404).json('Invalid Car ID');
+        }
+
+        let response = carDb.viewSpecific(car);
+        res.status(200).json(response);
     }
 };
 
