@@ -1,5 +1,6 @@
 import express from 'express';
 import User from './src/controllers/users';
+import Car from './src/controllers/cars';
 import bodyParser from 'body-parser';
 
 // Set up the express app
@@ -27,6 +28,10 @@ app.delete('/api/v1/users/:id', User.deleteUser);
 
 // Update user details 
 app.put('/api/v1/users/:id', User.updateUser);
+
+
+// Create car ad endpoint
+app.post('/api/v1/car', Car.create);
 
 // Start the express server
 app.listen(port, () => console.log(`server running on port ${port}`));
