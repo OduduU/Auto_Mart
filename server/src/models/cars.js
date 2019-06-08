@@ -111,8 +111,8 @@ const carDb = {
         return response;
     },
 
-    //View all new available unsold cars (manufacturer)
-    allNewUnsold(allCars) {
+    //View all unsold cars of a specific make (manufacturer).
+    specificMake(allCars) {
         let response = {
             status: 200,
             data: allCars

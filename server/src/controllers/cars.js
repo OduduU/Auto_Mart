@@ -158,8 +158,8 @@ const Car = {
         res.status(200).json(response);
     },
 
-    //View all new available unsold cars (manufacturer)
-    allNewUnsold(req, res) {
+    //View all unsold cars of a specific make (manufacturer).
+    specificMake(req, res) {
         let status = req.query;
         let available_cars = [];
         let response;
@@ -170,7 +170,7 @@ const Car = {
             }
         });
 
-        response = carDb.allNewUnsold(available_cars);
+        response = carDb.specificMake(available_cars);
         res.status(200).json(response);
     }
 };

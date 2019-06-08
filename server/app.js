@@ -54,8 +54,11 @@ app.delete('/api/v1/car/:id', Car.deleteSpecificCar);
 // Get all car ads
 app.get('/api/v1/car', Car.getAllCars);
 
-//View all unsold cars of a specific make (manufacturer)
-app.get('/api/v1/car?status=available&state=new', Car.allNewUnsold);
+//View all new available unsold cars (manufacturer)
+app.get('/api/v1/car?status=available&state=new', Car.specificMake);
+
+//View all used available unsold cars (manufacturer)
+app.get('/api/v1/car?status=available&state=used', Car.specificMake);
 
 // Start the express server
 app.listen(port, () => console.log(`server running on port ${port}`));
