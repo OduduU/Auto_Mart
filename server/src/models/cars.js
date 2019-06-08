@@ -20,6 +20,24 @@ const carDb = {
             }
         }
         return response;
+    },
+
+    // Mark a posted car Ad as sold
+    markAsSold(car) {
+        let response = {
+            status: 200,
+            data: {
+                id: car.id,
+                email: car.email,
+                created_on: car.created_on,
+                manufacturer: car.manufacturer,
+                status: car.status,
+                model: car.model,
+                price: car.price,
+                state: car.state
+            }
+        }
+        return response;
     }
 }
 

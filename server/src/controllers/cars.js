@@ -30,8 +30,30 @@ const Car = {
         car = dataB.getCarById(auto_id);
 
         let response = carDb.create(car);
-        res.status(200).json(car);
+        res.status(200).json(response);
     
+    },
+
+    // Mark a posted car Ad as sold
+    markAsSold(req, res) {
+        const { id } = req.params;
+        let cars = dataB.Cars;
+            
+        // look up the car
+        let car = dataB.getCarById(id);
+
+        // If not existing, return 404 (user not found)
+        if (car === false) return res.status(404).send('The car with the given ID was not found');
+
+        let index = cars.indexOf(car);
+
+        if (car.status === 'available') {
+            // Update details 
+            cars[index].status = 'sold';
+        }
+
+        let response = carDb.markAsSold(car);
+        res.status(200).json(response);
     }
 };
 
