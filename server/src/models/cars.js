@@ -109,7 +109,16 @@ const carDb = {
             data: allCars
         }
         return response;
-    }
+    },
+
+    //View all new available unsold cars (manufacturer)
+    allNewUnsold(allCars) {
+        let response = {
+            status: 200,
+            data: allCars
+        }
+        return response;
+    },
 }
 
 export default carDb;

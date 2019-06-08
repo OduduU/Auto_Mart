@@ -156,6 +156,22 @@ const Car = {
 
         response = carDb.getAllCars(allCars);
         res.status(200).json(response);
+    },
+
+    //View all new available unsold cars (manufacturer)
+    allNewUnsold(req, res) {
+        let status = req.query;
+        let available_cars = [];
+        let response;
+
+        dataB.Cars.forEach(car => {
+            if ((car.status === status.status) &&  (car.state === status.state)){
+                available_cars.push(car);
+            }
+        });
+
+        response = carDb.allNewUnsold(available_cars);
+        res.status(200).json(response);
     }
 };
 
