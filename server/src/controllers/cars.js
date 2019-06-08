@@ -93,6 +93,22 @@ const Car = {
 
         let response = carDb.viewSpecific(car);
         res.status(200).json(response);
+    },
+
+    // View all unsold cars
+    allUnsold(req, res) {
+        let status = req.query.status;
+        let available_cars = [];
+        let response;
+
+        dataB.Cars.forEach(car => {
+            if (car.status === status){
+                available_cars.push(car);
+            }
+        })
+
+        response = carDb.allUnsold(available_cars);
+        res.status(200).json(response);
     }
 };
 

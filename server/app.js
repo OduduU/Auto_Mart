@@ -42,5 +42,8 @@ app.patch('/api/v1/car/:id/price', Car.updatePrice);
 // View a specific car
 app.get('/api/v1/car/:id', Car.viewSpecific);
 
+// View all unsold cars
+app.get('/api/v1/car?status=available', Car.allUnsold);
+
 // Start the express server
 app.listen(port, () => console.log(`server running on port ${port}`));

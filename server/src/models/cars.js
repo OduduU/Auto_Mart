@@ -75,6 +75,15 @@ const carDb = {
             }
         }
         return response;
+    },
+    
+    // View all unsold cars
+    allUnsold(allCars) {
+        let response = {
+            status: 200,
+            data: allCars
+        }
+        return response;
     }
 }
 
