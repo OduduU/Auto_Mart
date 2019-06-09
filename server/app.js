@@ -2,6 +2,7 @@ import express from 'express';
 import User from './src/controllers/users';
 import Car from './src/controllers/cars';
 import Order from './src/controllers/orders';
+import Report from './src/controllers/flags';
 import bodyParser from 'body-parser';
 
 // Set up the express app
@@ -72,6 +73,10 @@ app.post('/api/v1/order', Order.create);
 
 // Update the price of a purchase order
 app.patch('/api/v1/order/:id/price', Order.updateOrder);
+
+// Create a flag
+// flag/report a posted AD as fraudulent.
+app.post('/api/v1/flag', Report.create);
 
 // Start the express server
 app.listen(port, () => console.log(`server running on port ${port}`));
