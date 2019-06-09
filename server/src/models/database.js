@@ -31,7 +31,7 @@ const database = {
             id: 1,
             buyer: 1,
             car_id: 1,
-            amount: 12.6,
+            price: 12.6,
             status: 'pending',
             quantity: 1,
             created_on: new Date()
@@ -98,10 +98,20 @@ const database = {
         return result;
     },
 
-    getOrderById(id) {
+    // getOrderById(id) {
+    //     let result = false;
+    //         this.Orders.forEach(order => {
+    //             if (order.id === parseInt(id)) {
+    //                 result = order;
+    //             }
+    //         })
+    //     return result;
+    // },
+
+    thisOrderExist(car_id, user_id) {
         let result = false;
             this.Orders.forEach(order => {
-                if (order.id === parseInt(id)) {
+                if (order.buyer === parseInt(user_id) && order.car_id === parseInt(car_id)) {
                     result = order;
                 }
             })

@@ -1,6 +1,7 @@
 import express from 'express';
 import User from './src/controllers/users';
 import Car from './src/controllers/cars';
+import Order from './src/controllers/orders';
 import bodyParser from 'body-parser';
 
 // Set up the express app
@@ -65,6 +66,9 @@ app.get('/api/v1/car?status=available&manufacturer=XXXValue', Car.specificManufa
 
 //View all cars of a specific body type
 app.get('/api/v1/car?body_type=bodyType', Car.specificBody);
+
+// Create a purchase order
+app.post('/api/v1/order', Order.create);
 
 // Start the express server
 app.listen(port, () => console.log(`server running on port ${port}`));
