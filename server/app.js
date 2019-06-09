@@ -70,5 +70,8 @@ app.get('/api/v1/car?body_type=bodyType', Car.specificBody);
 // Create a purchase order
 app.post('/api/v1/order', Order.create);
 
+// Update the price of a purchase order
+app.patch('/api/v1/order/:id/price', Order.updateOrder);
+
 // Start the express server
 app.listen(port, () => console.log(`server running on port ${port}`));

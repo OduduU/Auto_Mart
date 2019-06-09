@@ -98,15 +98,15 @@ const database = {
         return result;
     },
 
-    // getOrderById(id) {
-    //     let result = false;
-    //         this.Orders.forEach(order => {
-    //             if (order.id === parseInt(id)) {
-    //                 result = order;
-    //             }
-    //         })
-    //     return result;
-    // },
+    getOrderById(id) {
+        let result = false;
+            this.Orders.forEach(order => {
+                if (order.id === parseInt(id)) {
+                    result = order;
+                }
+            })
+        return result;
+    },
 
     thisOrderExist(car_id, user_id) {
         let result = false;

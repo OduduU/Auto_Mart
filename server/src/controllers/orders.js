@@ -36,6 +36,31 @@ const Order = {
         let response = orderDb.create(order);
         res.status(200).json(order);
     },
+
+    // Update the price of a purchase order
+    updateOrder(req, res) {
+        const { id } = req.params;
+        const { price } = req.body;
+        let orders = dataB.Orders;
+        
+        
+        // look up the order
+        let order = dataB.getOrderById(id);
+        let old_price_offered = order.price;
+
+        // If not existing, return 404 (user not found)
+        if (order === false) return res.status(404).send('The order with the given ID was not found');
+
+        let index = orders.indexOf(order);
+
+        if (order.status === 'pending') {
+            // Update details 
+            orders[index].price = price;
+        }
+
+        let response = orderDb.updateOrder(order, old_price_offered, price);
+        res.status(200).json(response);
+    }
 };
 
 export default Order;
