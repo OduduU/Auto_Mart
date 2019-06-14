@@ -1,4 +1,6 @@
 # Auto_Mart
+[![Build Status](https://travis-ci.org/OduduU/Auto_Mart.svg?branch=develop)](https://travis-ci.org/OduduU/Auto_Mart)
+/
 Cycle45 Bootcamp Challenge 
 
 
