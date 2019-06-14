@@ -79,10 +79,16 @@ const carDb = {
     
     // View all unsold cars
     allUnsold(allCars) {
-        let response = {
-            status: 200,
-            data: allCars
+        let response;
+        if(allCars.length === 0) {
+            response = 'No cars available'
+        } else {
+            response = {
+                status: 200,
+                data: allCars
+            }
         }
+        
         return response;
     },
 
