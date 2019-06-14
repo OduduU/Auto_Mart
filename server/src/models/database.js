@@ -18,7 +18,7 @@ const database = {
             created_on: new Date(),
             state: 'New',
             email: 'bullion.relson@gmail.com',
-            status: 'available',
+            status: 'sold',
             price: 12.6,
             manufacturer: 'Benz',
             model: 'E350',
