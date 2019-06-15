@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf build",
     "start": "node build/app.js",
-    "dev-start": "babel-watch app.js",
+    "dev-start": "babel-watch server/app.js",
     "test": "nyc --reporter=lcov --reporter=text-summary --reporter html mocha --reporter spec --require @babel/register --require @babel/polyfill ./server/test/**/*.js --exit",
     "build": "npm run clean && babel server --out-dir build",
     "lint": "eslint **/**/*.js --fix",
