@@ -7,12 +7,6 @@ let galleryModal = document.getElementById('myModal'),
     shoppingCart = document.querySelector('#cart-content tbody'),
     clearCartBtn = document.querySelector('.clear-cart');
 
-
-
-
-
-
-
 // Event Listeners
 
 eventListeners();
@@ -34,34 +28,28 @@ function eventListeners() {
     clearCartBtn.addEventListener('click', clearCart);
 }
 
-
-
-
-
-
-
 // Functions
 
 //Slide show
 function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none"; 
     }
-   slideIndex++;
+    slideIndex++;
     if (slideIndex > slides.length) {slideIndex = 1} 
     slides[slideIndex-1].style.display = "block"; 
     setTimeout(showSlides, 5000); // Change image every 2 seconds
 }
 
 //Header
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
+function displayHeader() {
+    let headerContainer = document.getElementById("myTopnav");
+    if (headerContainer.className === "topnav") {
+        headerContainer.className += " responsive";
     } else {
-        x.className = "topnav";
+        headerContainer.className = "topnav";
     }
 }
 
