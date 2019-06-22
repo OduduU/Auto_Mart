@@ -4,8 +4,6 @@ import carDb from './../models/cars';
 // const bcrypt = require('bcryptjs');
 
 
-
-
 const Car = {
     // adds new car to the database,   
     create(req, res) {
@@ -88,11 +86,41 @@ const Car = {
         let car = dataB.getCarById(id);
         
         if(car === false) {
-            return res.status(404).json('Invalid Car ID');
+            return res.status(404).json('The car with the given ID was not found');
         }
 
         let response = carDb.viewSpecific(car);
         res.status(200).json(response);
+    },
+
+    // View car controller
+    getCarQueries(req, res) {
+        const queries = Object.keys(req.query);
+
+        if(queries.includes('status') && (queries.length === 1)) {
+            // View all unsold cars
+            Car.allUnsold(req, res);
+
+        } else if (queries.includes('status') && queries.includes('min_price') && queries.includes('max_price') && (queries.length === 3)) {
+            //User can view all unsold cars within a price range
+            Car.unsoldWithinPrice(req, res);
+
+        } else if (queries.includes('status') && queries.includes('state') && (queries.length === 2)) {
+            //View all new/old available unsold cars
+            Car.specificMake(req, res);
+
+        } else if (queries.includes('status') && queries.includes('manufacturer') && (queries.length === 2)) {
+            //View all used available unsold cars (manufacturer)
+            Car.specificManufacturer(req, res);
+
+        } else if (queries.includes('body_type') && (queries.length === 1)) {
+            //View all cars of a specific body type
+            Car.specificBody(req, res);
+
+        }else {
+            // Get all car ads
+            Car.getAllCars(req, res);
+        }
     },
 
     // View all unsold cars
@@ -113,19 +141,19 @@ const Car = {
 
     //User can view all unsold cars within a price range
     unsoldWithinPrice(req, res) {
-        let status = req.query.status;
+        // let status = req.query.status;
         let min_price = req.query.min_price;
         let max_price = req.query.max_price;
         let available_cars = [];
         let response;
 
         dataB.Cars.forEach(car => {
-            if ((car.price >= min_price) && (car.price <= max_price) &&  (car.status === status)){
+            if ((car.price >= parseFloat(min_price)) && (car.price <= parseFloat(max_price))){
                 available_cars.push(car);
             }
         })
 
-        response = carDb.unsoldWithinPrice(available_cars);
+        response = carDb.allUnsold(available_cars);
         res.status(200).json(response);
     },
 
@@ -154,7 +182,7 @@ const Car = {
             allCars.push(car);
         });
 
-        response = carDb.getAllCars(allCars);
+        response = carDb.allUnsold(allCars);
         res.status(200).json(response);
     },
 
@@ -165,12 +193,12 @@ const Car = {
         let response;
 
         dataB.Cars.forEach(car => {
-            if ((car.status === status.status) &&  (car.state === status.state)){
+            if ((car.state === status.state)){
                 available_cars.push(car);
             }
         });
 
-        response = carDb.specificMake(available_cars);
+        response = carDb.allUnsold(available_cars)
         res.status(200).json(response);
     },
 
@@ -181,12 +209,12 @@ const Car = {
         let response;
 
         dataB.Cars.forEach(car => {
-            if ((car.status === status.status) &&  (car.manufacturer === status.manufacturer)){
+            if ((car.manufacturer === status.manufacturer)){
                 available_cars.push(car);
             }
         });
 
-        response = carDb.specificMake(available_cars);
+        response = carDb.allUnsold(available_cars);
         res.status(200).json(response);
     },
 
@@ -202,7 +230,7 @@ const Car = {
             }
         });
 
-        response = carDb.specificMake(available_cars);
+        response = carDb.allUnsold(available_cars);
         res.status(200).json(response);
     }
 };

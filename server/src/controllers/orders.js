@@ -9,32 +9,35 @@ import orderDb from './../models/orders';
 const Order = {
     // Create a purchase order   
     create(req, res) {
-        const {car_id, user_id, status, quantity, priceOffered} = req.body;
+        const {car_id, user_id, status, quantity, price_offered} = req.body;
         let auto_id = dataB.autoIncrement(dataB.Orders);
         let car =  dataB.getCarById(car_id);
         let order;
 
+        // If car_id not existing, return 404 (car not found)
+        if (car === false) return res.status(404).send('The car with the given ID was not found');
+
         if(dataB.thisOrderExist(car_id, user_id)) {
             let index = dataB.Orders.indexOf(dataB.thisOrderExist(car_id, user_id))
             let current_quantity = dataB.Orders[index].quantity;
-            dataB.Orders[index].quantity = parseInt(current_quantity) + 1;
+            dataB.Orders[index].quantity = parseInt(current_quantity) + parseInt(quantity);
         }
         else{
             dataB.Orders.push({
                 id: auto_id,
-                buyer: user_id,
-                car_id: car_id,
+                buyer: parseInt(user_id),
+                car_id: parseInt(car_id),
                 created_on: new Date(),
                 price: car.price,
-                price_offered: priceOffered,
-                quantity: quantity,
+                price_offered: parseFloat(price_offered),
+                quantity: parseInt(quantity),
                 status: status,
             });
         }
         order = dataB.thisOrderExist(car_id, user_id);
 
         let response = orderDb.create(order);
-        res.status(200).json(order);
+        res.status(200).json(response);
     },
 
     // Update the price of a purchase order

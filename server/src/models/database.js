@@ -16,10 +16,10 @@ const database = {
             id: 1,
             owner: 1,
             created_on: new Date(),
-            state: 'New',
+            state: 'new',
             email: 'bullion.relson@gmail.com',
-            status: 'sold',
-            price: 12.6,
+            status: 'available',
+            price: 20.6,
             manufacturer: 'Benz',
             model: 'E350',
             body_type: 'Sport'
@@ -32,6 +32,7 @@ const database = {
             buyer: 1,
             car_id: 1,
             price: 12.6,
+            price_offered: 11.3,
             status: 'pending',
             quantity: 1,
             created_on: new Date()

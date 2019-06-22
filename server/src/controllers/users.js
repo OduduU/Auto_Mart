@@ -1,6 +1,6 @@
 import dataB from './../models/database';
 import UserDb from './../models/users';
-import authenticateUser from './../../auth'
+import getToken from './../../services/token';
 const bcrypt = require('bcryptjs');
 
 
@@ -9,14 +9,14 @@ const bcrypt = require('bcryptjs');
 const User = {
     // user login
     login(req, res) {
-        const {email,password} = req.body;
+        const {email, password} = req.body;
         let user = dataB.getUserByEmail(email);
         if (user === false){
             return res.status(404).json('Email Does Not Exist, Please Sign Up');
         }
 
         if(bcrypt.compareSync(password, user.password)){
-            let token = authenticateUser(user.email);
+            let token = getToken({email});
             let response = UserDb.login(user, token);
             res.status(200).json(response);
         } else {
@@ -28,7 +28,8 @@ const User = {
     create(req, res) {
         const {email, first_name, last_name, password, address} = req.body;
         let salt = bcrypt.genSaltSync(10);
-        let token = authenticateUser(email);
+        let token = getToken({email});
+
         const newUser = {
             token: token,
             id: dataB.autoIncrement(dataB.Users),
@@ -43,7 +44,7 @@ const User = {
         let user = dataB.getUserByEmail(email);
 
         if (user !== false) {
-            return res.status(404).json('Email Already Exist');
+            return res.status(404).json('User Already Exist');
         } else {            
             let response = UserDb.create(newUser)
             res.status(200).json(response);
