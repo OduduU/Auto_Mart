@@ -4,9 +4,7 @@ const router = express.Router();
 
 
 // Login endpoint
-// router.post('/auth/signin', function(req, res){
-//     User.login
-// });
+router.post('/auth/signin', User.login);
 
 // Signup endpoint
 router.post('/auth/signup', User.create);
