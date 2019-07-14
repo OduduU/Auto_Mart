@@ -173,11 +173,11 @@ const Cars = {
             //View all new/old available unsold cars
             Cars.specificMake(req, res);
 
-        } //else if (queries.includes('status') && queries.includes('manufacturer') && (queries.length === 2)) {
-        //     //View all used available unsold cars (manufacturer)
-        //     Car.specificManufacturer(req, res);
+        } else if (queries.includes('status') && queries.includes('manufacturer') && (queries.length === 2)) {
+            //View all used available unsold cars (manufacturer)
+            Cars.specificManufacturer(req, res);
 
-        // } else if (queries.includes('body_type') && (queries.length === 1)) {
+        } //else if (queries.includes('body_type') && (queries.length === 1)) {
         //     //View all cars of a specific body type
         //     Car.specificBody(req, res);
 
@@ -251,6 +251,33 @@ const Cars = {
             const { rows } = await db.query(getAllCars);
             rows.forEach(car => {
                 if ((car.status === status.status) && (car.state === status.state)) {
+                    available_cars.push(car);
+                }
+            })
+            
+            if (available_cars.length === 0) {
+                return res.status(400).json('No cars available');
+            } else {
+                res.status(200).json({
+                    status: 200,
+                    data: available_cars
+                })
+            }
+        } catch (error) {
+            return res.status(400).json(error.message);
+        }
+    },
+
+    //View all used available unsold cars (manufacturer)
+    async specificManufacturer(req, res) {
+        const getAllCars = `SELECT * FROM Cars`;
+        const status = req.query;
+        const available_cars = [];
+
+        try {
+            const { rows } = await db.query(getAllCars);
+            rows.forEach(car => {
+                if ((car.status === status.status) && (car.manufacturer === status.manufacturer)) {
                     available_cars.push(car);
                 }
             })
