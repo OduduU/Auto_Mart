@@ -177,11 +177,11 @@ const Cars = {
             //View all used available unsold cars (manufacturer)
             Cars.specificManufacturer(req, res);
 
-        } //else if (queries.includes('body_type') && (queries.length === 1)) {
-        //     //View all cars of a specific body type
-        //     Car.specificBody(req, res);
+        } else if (queries.includes('body_type') && (queries.length === 1)) {
+            //View all cars of a specific body type
+            Cars.specificBody(req, res);
 
-        // }else {
+        } //else {
         //     // Get all car ads
         //     Car.getAllCars(req, res);
         // }
@@ -278,6 +278,33 @@ const Cars = {
             const { rows } = await db.query(getAllCars);
             rows.forEach(car => {
                 if ((car.status === status.status) && (car.manufacturer === status.manufacturer)) {
+                    available_cars.push(car);
+                }
+            })
+            
+            if (available_cars.length === 0) {
+                return res.status(400).json('No cars available');
+            } else {
+                res.status(200).json({
+                    status: 200,
+                    data: available_cars
+                })
+            }
+        } catch (error) {
+            return res.status(400).json(error.message);
+        }
+    },
+
+    //View all cars of a specific body type
+    async specificBody(req, res) {
+        const getAllCars = `SELECT * FROM Cars`;
+        const status = req.query.body_type;
+        const available_cars = [];
+
+        try {
+            const { rows } = await db.query(getAllCars);
+            rows.forEach(car => {
+                if (car.body_type === status) {
                     available_cars.push(car);
                 }
             })
