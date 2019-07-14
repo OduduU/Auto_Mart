@@ -23,5 +23,8 @@ const upload = multer({ storage: storage});
 // Create car ad endpoint
 router.post('/', upload.single('carImage'), Car.create);
 
+// Mark a posted car Ad as sold
+router.patch('/:id/status', Car.markAsSold);
+
 
 module.exports = router;
