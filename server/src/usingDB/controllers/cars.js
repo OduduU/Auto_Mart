@@ -181,10 +181,10 @@ const Cars = {
             //View all cars of a specific body type
             Cars.specificBody(req, res);
 
-        } //else {
-        //     // Get all car ads
-        //     Car.getAllCars(req, res);
-        // }
+        } else {
+            // Get all car ads
+            Cars.getAllCars(req, res);
+        }
     },
 
     // View all unsold cars
@@ -320,7 +320,24 @@ const Cars = {
         } catch (error) {
             return res.status(400).json(error.message);
         }
-    }
+    },
+
+    // Get all car ads
+    async getAllCars(req, res) {
+        const getAllCars = `SELECT * FROM Cars`;
+
+        try {
+            const { rows, rowCount } = await db.query(getAllCars);
+            if (!rows) return res.status(400).json('No cars available');
+
+            res.status(200).json({
+                status: 200,
+                data: rows
+            });
+        } catch (error) {
+            return res.status(400).json(error.message);
+        }
+    },
 }
 
 export default Cars;
