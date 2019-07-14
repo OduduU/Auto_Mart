@@ -169,11 +169,11 @@ const Cars = {
             //User can view all unsold cars within a price range
             Cars.unsoldWithinPrice(req, res);
 
-        } //else if (queries.includes('status') && queries.includes('state') && (queries.length === 2)) {
-        //     //View all new/old available unsold cars
-        //     Car.specificMake(req, res);
+        } else if (queries.includes('status') && queries.includes('state') && (queries.length === 2)) {
+            //View all new/old available unsold cars
+            Cars.specificMake(req, res);
 
-        // } else if (queries.includes('status') && queries.includes('manufacturer') && (queries.length === 2)) {
+        } //else if (queries.includes('status') && queries.includes('manufacturer') && (queries.length === 2)) {
         //     //View all used available unsold cars (manufacturer)
         //     Car.specificManufacturer(req, res);
 
@@ -240,6 +240,33 @@ const Cars = {
             return res.status(400).json(error.message);
         }
     },
+
+    //View all unsold cars of a specific make (manufacturer).
+    async specificMake(req, res) {
+        const getAllCars = `SELECT * FROM Cars`;
+        const status = req.query;
+        const available_cars = [];
+
+        try {
+            const { rows } = await db.query(getAllCars);
+            rows.forEach(car => {
+                if ((car.status === status.status) && (car.state === status.state)) {
+                    available_cars.push(car);
+                }
+            })
+            
+            if (available_cars.length === 0) {
+                return res.status(400).json('No cars available');
+            } else {
+                res.status(200).json({
+                    status: 200,
+                    data: available_cars
+                })
+            }
+        } catch (error) {
+            return res.status(400).json(error.message);
+        }
+    }
 }
 
 export default Cars;
