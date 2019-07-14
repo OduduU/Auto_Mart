@@ -338,6 +338,18 @@ const Cars = {
             return res.status(400).json(error.message);
         }
     },
+
+    // Delete a specific car ad using id
+    async deleteSpecificCar(req, res) {
+        const deleteCarQuery = 'DELETE FROM Cars WHERE id=$1 returning *';
+        try {
+            const { rows } = await db.query(deleteCarQuery, [req.params.id]);
+            if (!rows[0]) return res.status(404).json('The car with the given ID was not found');
+            return res.status(200).json('Car Ad successfully deleted');
+        } catch (error) {
+            return res.status(400).json(error.message);
+        }
+    }
 }
 
 export default Cars;

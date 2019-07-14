@@ -35,5 +35,8 @@ router.get('/:id', Car.viewSpecific);
 // View all unsold cars
 router.get('/', Car.getCarQueries);
 
+// Delete a specific car ad using id
+router.delete('/:id', Car.deleteSpecificCar);
+
 
 module.exports = router;
