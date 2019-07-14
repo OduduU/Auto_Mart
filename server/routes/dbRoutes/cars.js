@@ -32,5 +32,8 @@ router.patch('/:id/price', Car.updatePrice);
 // View a specific car
 router.get('/:id', Car.viewSpecific);
 
+// View all unsold cars
+router.get('/', Car.getCarQueries);
+
 
 module.exports = router;

@@ -155,6 +155,62 @@ const Cars = {
         } catch (error) {
             return res.status(400).json(error.message);
         }
+    },
+
+    // View car controller
+    getCarQueries(req, res) {
+        const queries = Object.keys(req.query);
+
+        if(queries.includes('status') && (queries.length === 1)) {
+            // View all unsold cars
+            Cars.allUnsold(req, res);
+
+        } //else if (queries.includes('status') && queries.includes('min_price') && queries.includes('max_price') && (queries.length === 3)) {
+            //User can view all unsold cars within a price range
+        //     Car.unsoldWithinPrice(req, res);
+
+        // } else if (queries.includes('status') && queries.includes('state') && (queries.length === 2)) {
+        //     //View all new/old available unsold cars
+        //     Car.specificMake(req, res);
+
+        // } else if (queries.includes('status') && queries.includes('manufacturer') && (queries.length === 2)) {
+        //     //View all used available unsold cars (manufacturer)
+        //     Car.specificManufacturer(req, res);
+
+        // } else if (queries.includes('body_type') && (queries.length === 1)) {
+        //     //View all cars of a specific body type
+        //     Car.specificBody(req, res);
+
+        // }else {
+        //     // Get all car ads
+        //     Car.getAllCars(req, res);
+        // }
+    },
+
+    // View all unsold cars
+    async allUnsold(req, res) {
+        const getAllCars = `SELECT * FROM Cars`;
+        const status = req.query.status;
+        const available_cars = [];
+        try {
+            const { rows } = await db.query(getAllCars);
+            rows.forEach(car => {
+                if (car.status === status){
+                    available_cars.push(car);
+                }
+            })
+            
+            if (available_cars.length === 0) {
+                return res.status(400).json('No cars available');
+            } else {
+                res.status(200).json({
+                    status: 200,
+                    data: available_cars
+                })
+            }
+        } catch (error) {
+            return res.status(400).json(error.message);
+        }
     }
 }
 
