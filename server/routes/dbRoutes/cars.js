@@ -29,5 +29,8 @@ router.patch('/:id/status', Car.markAsSold);
 // Update the price of a car
 router.patch('/:id/price', Car.updatePrice);
 
+// View a specific car
+router.get('/:id', Car.viewSpecific);
+
 
 module.exports = router;

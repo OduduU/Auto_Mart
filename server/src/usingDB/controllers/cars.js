@@ -128,6 +128,33 @@ const Cars = {
         } catch (error) {
             return res.status(400).json(error.message);
         }
+    },
+
+    // View a specific car
+    async viewSpecific(req, res) {
+        try {
+            const {rows} = await db.getCarById([req.params.id]);
+            if (!rows[0]) {
+                return res.status(404).json('The car with the given ID was not found');
+            }
+            const payload = rows[0];
+            return res.status(200).json({
+                status: 200,
+                data: {
+                    id: payload.id,
+                    email: payload.email,
+                    created_on: payload.created_on,
+                    manufacturer: payload.manufacturer,
+                    status: payload.status,
+                    model: payload.model,
+                    price: payload.price,
+                    state: payload.state,
+                }
+            });
+            
+        } catch (error) {
+            return res.status(400).json(error.message);
+        }
     }
 }
 
