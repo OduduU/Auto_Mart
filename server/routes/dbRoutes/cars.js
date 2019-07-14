@@ -26,5 +26,8 @@ router.post('/', upload.single('carImage'), Car.create);
 // Mark a posted car Ad as sold
 router.patch('/:id/status', Car.markAsSold);
 
+// Update the price of a car
+router.patch('/:id/price', Car.updatePrice);
+
 
 module.exports = router;
