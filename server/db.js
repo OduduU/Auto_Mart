@@ -107,6 +107,44 @@ const dropUserTable = () => {
 
 }
 
+const createOrderTable = () => {
+    const queryText =`CREATE TABLE IF NOT EXISTS Orders(
+        id UUID PRIMARY KEY,
+        buyer VARCHAR(128) NOT NULL,
+        car_id VARCHAR(128) NOT NULL,
+        price VARCHAR(128) NOT NULL,
+        price_offered VARCHAR(128) NOT NULL,
+        status VARCHAR(128) NOT NULL,
+        quantity VARCHAR(128) NOT NULL,
+        created_on TIMESTAMP NOT NULL
+    )`;
+
+    pool.query(queryText)
+        .then((res) => {
+            console.log(res);
+            pool.end();
+        })
+        .catch((err) => {
+            console.log(err);
+            pool.end();
+        });
+}
+
+const dropOrderTable = () => {
+    const queryText = 'DROP TABLE IF EXISTS Orders';
+    
+    pool.query(queryText)
+    .then((res) => {
+        console.log(res);
+        pool.end();
+    })
+    .catch((err) => {
+        console.log(err);
+        pool.end();
+    });
+
+}
+
 
 
 pool.on('remove', () => {
@@ -118,7 +156,9 @@ module.exports = {
     createUserTable,
     dropUserTable,
     createCarTable,
-    dropCarTable
+    dropCarTable,
+    createOrderTable,
+    dropOrderTable
 };
   
 require('make-runnable');
