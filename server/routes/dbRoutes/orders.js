@@ -5,5 +5,8 @@ const router = express.Router();
 // Create a purchase order
 router.post('/', Order.create);
 
+// Update the price of a purchase order
+router.patch('/:id/price', Order.updateOrder);
+
 
 module.exports = router;

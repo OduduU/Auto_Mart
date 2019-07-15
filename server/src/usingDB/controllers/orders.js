@@ -43,6 +43,34 @@ const Orders = {
         } catch (error) {
             return res.status(400).json(error.message);
         }
+    },
+
+    // Update the price of a purchase order
+    async updateOrder(req, res) {
+        const { id } = req.params;
+        const { price } = req.body;
+        const getOrderByIdquery = 'SELECT * FROM Orders WHERE id = $1';
+        const updateOrderQuery = `UPDATE Orders SET price=$1 WHERE id=$2 returning *`;   
+        
+        try {
+            // look up the order
+            const { rows } = await db.query(getOrderByIdquery, [id]);
+
+            // If not existing, return 404 (user not found)
+            if (!rows[0]) return res.status(404).send('The order with the given ID was not found');
+            const old_price_offered = rows[0].price;
+
+            if (rows[0].status === 'pending') {
+                // Update details 
+                await db.query(updateOrderQuery, [price, id]);
+            }
+
+            const response = orderResponse.updateOrder(rows[0], old_price_offered, price);
+            res.status(200).json(response);
+        } catch (error) {
+            return res.status(400).json(error.message);
+        }
+        
     }
 };
 
