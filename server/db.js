@@ -145,6 +145,41 @@ const dropOrderTable = () => {
 
 }
 
+const createFlagTable = () => {
+    const queryText =`CREATE TABLE IF NOT EXISTS Flags(
+        id UUID PRIMARY KEY,
+        car_id VARCHAR(128) NOT NULL,
+        created_on TIMESTAMP NOT NULL,
+        reason VARCHAR(128) NOT NULL,
+        description VARCHAR(128) NOT NULL
+    )`;
+
+    pool.query(queryText)
+        .then((res) => {
+            console.log(res);
+            pool.end();
+        })
+        .catch((err) => {
+            console.log(err);
+            pool.end();
+        });
+}
+
+const dropFlagTable = () => {
+    const queryText = 'DROP TABLE IF EXISTS Flags';
+    
+    pool.query(queryText)
+    .then((res) => {
+        console.log(res);
+        pool.end();
+    })
+    .catch((err) => {
+        console.log(err);
+        pool.end();
+    });
+
+}
+
 
 
 pool.on('remove', () => {
@@ -158,7 +193,9 @@ module.exports = {
     createCarTable,
     dropCarTable,
     createOrderTable,
-    dropOrderTable
+    dropOrderTable,
+    createFlagTable,
+    dropFlagTable
 };
   
 require('make-runnable');

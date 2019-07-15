@@ -5,7 +5,8 @@ import users from './routes/dbRoutes/users';
 import cars from './routes/dbRoutes/cars';
 // import orders from './routes/orders';
 import orders from './routes/dbRoutes/orders';
-import flags from './routes/flags';
+// import flags from './routes/flags';
+import flags from './routes/dbRoutes/flags';
 import bodyParser from 'body-parser';
 
 // Set up the express app
